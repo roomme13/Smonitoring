@@ -65,8 +65,8 @@ services:
   zabbix-web-nginx-mysql:
     image: zabbix/zabbix-web-nginx-mysql:ubuntu-5.4-latest
     ports:
-      - "80:8080"
-      - "443:8443"
+      - "8888:8080"
+      - "8443:8443"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./zbx_env/etc/ssl/nginx:/etc/ssl/nginx:ro
@@ -152,64 +152,6 @@ services:
       com.zabbix.description: "Zabbix agent"
       com.zabbix.company: "Zabbix LLC"
       com.zabbix.component: "zabbix-agentd"
-      com.zabbix.os: "ubuntu"
-
-  zabbix-java-gateway:
-    image: zabbix/zabbix-java-gateway:ubuntu-5.4-latest
-    profiles:
-      - full
-      - all
-    ports:
-      - "10052:10052"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
-          memory: 256M
-    env_file:
-      - .env_java
-    networks:
-      zbx_net_backend:
-        aliases:
-          - zabbix-java-gateway
-          - zabbix-java-gateway-ubuntu
-    stop_grace_period: 5s
-    labels:
-      com.zabbix.description: "Zabbix Java Gateway"
-      com.zabbix.company: "Zabbix LLC"
-      com.zabbix.component: "java-gateway"
-      com.zabbix.os: "ubuntu"
-
-  zabbix-snmptraps:
-    image: zabbix/zabbix-snmptraps:ubuntu-5.4-latest
-    profiles:
-      - full
-      - all
-    ports:
-      - "162:1162/udp"
-    volumes:
-      - snmptraps:/var/lib/zabbix/snmptraps:rw
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 256M
-        reservations:
-          cpus: '0.25'
-          memory: 128M
-    networks:
-      zbx_net_frontend:
-        aliases:
-          - zabbix-snmptraps
-      zbx_net_backend:
-    stop_grace_period: 5s
-    labels:
-      com.zabbix.description: "Zabbix snmptraps"
-      com.zabbix.company: "Zabbix LLC"
-      com.zabbix.component: "snmptraps"
       com.zabbix.os: "ubuntu"
 
   mysql-server:
