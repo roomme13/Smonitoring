@@ -730,7 +730,7 @@ cat <<EOF
     "jsonrpc": "2.0",
     "method": "configuration.import",
     "params": {
-        "format": "xml",
+        "format": "json",
         "rules": {
             "discoveryRules": {
                 "createMissing": true,
