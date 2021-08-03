@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   zabbix-server:
-    image: zabbix/zabbix-server-mysql:ubuntu-5.4-latest
+    image: zabbix/zabbix-server-mysql:alpine-5.4-latest
     ports:
       - "10051:10051"
     volumes:
@@ -63,7 +63,7 @@ services:
       com.zabbix.os: "ubuntu"
 
   zabbix-web-nginx-mysql:
-    image: zabbix/zabbix-web-nginx-mysql:ubuntu-5.4-latest
+    image: zabbix/zabbix-web-nginx-mysql:alpine-5.4-latest
     ports:
       - "8888:8080"
       - "8443:8443"
@@ -116,7 +116,7 @@ services:
       com.zabbix.os: "ubuntu"
 
   zabbix-agent:
-    image: zabbix/zabbix-agent:ubuntu-5.4-latest
+    image: zabbix/zabbix-agent:alpine-5.4-latest
     profiles:
       - full
       - all

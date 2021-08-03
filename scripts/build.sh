@@ -406,7 +406,7 @@ case "$1" in
         -H "Accept: application/json" \
         -H "Content-Type: application/json;charset=UTF-8" \
         -H "Authorization:Bearer $GRF_API_KEY" \
-        -d "@../grafana_dashboards/zabbix-system-status.json" \
+        -d "@../grafana_dashboards/zabbix-server-dashboard.json" \
         -X POST "$GRF_SERVER_URL/api/dashboards/db" |jq .)
 
         if [[ "$POST" == *"success"* ]]; then
