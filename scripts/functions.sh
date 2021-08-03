@@ -742,7 +742,7 @@ cat <<EOF
             },
             "items": {
                 "createMissing": true,
-                "updateExisting": true,
+                "updateExisting": true
             },
             "templates": {
                 "createMissing": true,
