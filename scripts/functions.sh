@@ -52,7 +52,6 @@ function FinisMessage() {
         echo -e '\E[1m'"\033\Pasword: zabbix (Don't forget to change it too!)\033[0m"
         echo "-----------------------------------------------------------------"
         echo ""
-        echo -e '\E[1m'"\033\For any contribution or issue reporting please visit https://bitbucket.org/secopstech/zabbix-server/issues.\033[0m"
 }
 
 function InstallDependenciesCentOS() {
