@@ -730,7 +730,6 @@ cat <<EOF
     "jsonrpc": "2.0",
     "method": "configuration.import",
     "params": {
-        "format": "json",
         "rules": {
             "discoveryRules": {
                 "createMissing": true,
@@ -753,7 +752,7 @@ cat <<EOF
                 "updateExisting": true
             }
         },
-        "source": "{\"zabbix_export\":{\"version\":\"5.4\",\"date\":\"2021-07-21T14:23:20Z\",\"groups\":[{\"uuid\":\"a0fac18b824e454c8f3a546cdfea2455\",\"name\":\"SafousEdge\"}],\"templates\":[{\"uuid\":\"0bd17bb796f040c88f26db88c5354d4e\",\"template\":\"SafousEdgeMonitoringEdge\",\"name\":\"SafousEdgeMonitoringEdge\",\"groups\":[{\"name\":\"SafousEdge\"}],\"items\":[{\"uuid\":\"28c7738ec9fb485>"
+        "source": "<?xmlversion=\"1.0\"encoding=\"UTF-8\"?>\n<zabbix_export>\n<version>5.4</version>\n<date>2021-07-21T14:23:15Z</date>\n<groups>\n<group>\n<uuid>a0fac18b824e454c8f3a546cdfea2455</uuid>\n<name>SafousEdge</name>\n</group>\n</groups>\n<templates>\n<template>\n<uuid>0bd17bb796f040c88f26db88c5354d4e</uuid>\n<template>SafousEdgeMonitoringEdge</template>\n<name>SafousEdgeMonitoringEdg>"
     },
     "auth": "$ZBX_AUTH_TOKEN",
     "id": 1
