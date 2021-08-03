@@ -81,8 +81,8 @@ case "$1" in
         fi
 
         # Generate random password for Mysql root and zabbix users
-        openssl rand -base64 18 > $BASEDIR/../configs/.MYSQL_PASSWORD
-        openssl rand -base64 18 > $BASEDIR/../configs/.MYSQL_ROOT_PASSWORD
+        openssl rand -base64 18 > $BASEDIR/../.MYSQL_PASSWORD
+        openssl rand -base64 18 > $BASEDIR/../.MYSQL_ROOT_PASSWORD
 
         # Check if zabbix-server is already up
         CheckZabbix
