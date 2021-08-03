@@ -44,8 +44,8 @@ services:
         aliases:
           - zabbix-server
           - zabbix-server-mysql
-          - zabbix-server-ubuntu-mysql
-          - zabbix-server-mysql-ubuntu
+          - zabbix-server-alpine-mysql
+          - zabbix-server-mysql-alpine
       zbx_net_frontend:
 #   devices:
 #     - "/dev/ttyUSB0:/dev/ttyUSB0"
@@ -60,7 +60,7 @@ services:
       com.zabbix.company: "Zabbix LLC"
       com.zabbix.component: "zabbix-server"
       com.zabbix.dbtype: "mysql"
-      com.zabbix.os: "ubuntu"
+      com.zabbix.os: "alpine"
 
   zabbix-web-nginx-mysql:
     image: zabbix/zabbix-web-nginx-mysql:alpine-5.4-latest
@@ -101,8 +101,8 @@ services:
       zbx_net_backend:
         aliases:
           - zabbix-web-nginx-mysql
-          - zabbix-web-nginx-ubuntu-mysql
-          - zabbix-web-nginx-mysql-ubuntu
+          - zabbix-web-nginx-alpine-mysql
+          - zabbix-web-nginx-mysql-alpine
       zbx_net_frontend:
     stop_grace_period: 10s
     sysctls:
@@ -113,7 +113,7 @@ services:
       com.zabbix.component: "zabbix-frontend"
       com.zabbix.webserver: "nginx"
       com.zabbix.dbtype: "mysql"
-      com.zabbix.os: "ubuntu"
+      com.zabbix.os: "alpine"
 
   zabbix-agent:
     image: zabbix/zabbix-agent:alpine-5.4-latest
@@ -146,13 +146,13 @@ services:
         aliases:
           - zabbix-agent
           - zabbix-agent-passive
-          - zabbix-agent-ubuntu
+          - zabbix-agent-alpine
     stop_grace_period: 5s
     labels:
       com.zabbix.description: "Zabbix agent"
       com.zabbix.company: "Zabbix LLC"
       com.zabbix.component: "zabbix-agentd"
-      com.zabbix.os: "ubuntu"
+      com.zabbix.os: "alpine"
 
   mysql-server:
     image: mysql:8.0
