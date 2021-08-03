@@ -732,7 +732,7 @@ cat <<EOF
     "params": {
         "format": "xml",
         "rules": {
-            "discoverRules": {
+            "discoveryRules": {
                 "createMissing": true,
                 "updateExisting": true
             },
