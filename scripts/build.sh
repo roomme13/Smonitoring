@@ -141,7 +141,7 @@ case "$1" in
         POST=$(curl -s --insecure \
         -H "Accept: application/json" \
         -H "Content-Type:application/json" \
-        -X POST --data @$BASEDIR/../zabbix_templates/edge.json "$ZBX_SERVER_URL/api_jsonrpc.php"  |jq .)
+        -X POST --data "$(AddEdgeTemmplate)" "$ZBX_SERVER_URL/api_jsonrpc.php"  |jq .)
 
         if [[ "$POST" == *"error"* ]]; then
             if [[ "$POST" == *"already exists"* ]]; then
