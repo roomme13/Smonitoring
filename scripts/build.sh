@@ -134,15 +134,6 @@ case "$1" in
             EchoDash
         fi
 
-        ########## HOST GROUPS CONFIGURATIONS ##########
-        # This creates all defined host groups in environment file
-        echo -e ""
-        echo -e '\E[96m'"\033\- Create hosts groups.\033[0m"
-        sleep 1
-        CreateHostGroups
-        sleep 1
-        EchoDash
-
         ########## TEMPLATE CONFIGURATIONS ##########
         echo -e ""
         echo -e '\E[96m'"\033\- Add Safous Edge Template.\033[0m"
@@ -171,6 +162,15 @@ case "$1" in
             sleep 1
         fi
 
+        sleep 1
+        EchoDash
+
+        ########## HOST GROUPS CONFIGURATIONS ##########
+        # This creates all defined host groups in environment file
+        echo -e ""
+        echo -e '\E[96m'"\033\- Create hosts groups.\033[0m"
+        sleep 1
+        CreateHostGroups
         sleep 1
         EchoDash
 

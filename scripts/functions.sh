@@ -730,6 +730,7 @@ cat <<EOF
     "jsonrpc": "2.0",
     "method": "configuration.import",
     "params": {
+        "format": "xml",
         "rules": {
             "discoveryRules": {
                 "createMissing": true,
@@ -749,11 +750,10 @@ cat <<EOF
             },
             "groups": {
                 "createMissing": true,
-                "updateExisting": true
+                "updateExisting": false
             }
         },
-        "source": "<?xmlversion=\"1.0\"encoding=\"UTF-8\"?>\n<zabbix_export>\n<version>5.4</version>\n<date>2021-07-21T14:23:15Z</date>\n<groups>\n<group>\n<uuid>a0fac18b824e454c8f3a546cdfea2455</uuid>\n<name>SafousEdge</name>\n</group>\n</groups>\n<templates>\n<template>\n<uuid>0bd17bb796f040c88f26db88c5354d4e</uuid>\n<template>SafousEdgeMonitoringEdge</template>\n<name>SafousEdgeMonitoringEdg>"
-    },
+        "source": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><zabbix_export><version>5.4</version><date>2021-07-21T14:23:15Z</date><groups><group><uuid>a0fac18b824e454c8f3a546cdfea2455</uuid><name>Safous Edge</name></group></groups><templates><template><uuid>0bd17bb796f040c88f26db88c5354d4e</uuid><template>Safous Edge Monitoring Edge</template><name>Safous Edge Monitoring Edg>    },
     "auth": "$ZBX_AUTH_TOKEN",
     "id": 1
 }
