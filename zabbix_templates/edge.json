@@ -1,32 +1,577 @@
 {
-  "jsonrpc": "2.0",
-    "method": "configuration.import",
-    "params": {
-	"format": "xml",
-        "rules": {
-            "discoveryRules": {
-                "createMissing": true,
-                "updateExisting": true
-            },
-            "hosts": {
-                "createMissing": true,
-                "updateExisting": true
-            },
-            "items": {
-                "createMissing": true,
-                "updateExisting": true
-            },
-            "templates": {
-                "createMissing": true,
-                "updateExisting": true
-            },
-            "groups": {
-                "createMissing": true,
-                "updateExisting": false
+    "zabbix_export": {
+        "version": "5.4",
+        "date": "2021-07-21T14:23:20Z",
+        "groups": [
+            {
+                "uuid": "a0fac18b824e454c8f3a546cdfea2455",
+                "name": "Safous Edge"
             }
-        },
-        "source": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><zabbix_export><version>5.4</version><date>2021-07-21T14:23:15Z</date><groups><group><uuid>a0fac18b824e454c8f3a546cdfea2455</uuid><name>Safous Edge</name></group></groups><templates><template><uuid>0bd17bb796f040c88f26db88c5354d4e</uuid><template>Safous Edge Monitoring Edge</template><name>Safous Edge Monitoring Edge</name><groups><group><name>Safous Edge</name></group></groups><items><item><uuid>28c7738ec9fb4856aae92e054f8b6b87</uuid><name>Total CPU Process Seconds</name><type>DEPENDENT</type><key>cpu.total.s</key><delay>0</delay><value_type>FLOAT</value_type><units>s</units><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>process_cpu_seconds_total</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Process</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item><item><uuid>0ae81d55232b441db114421226bd18bf</uuid><name>Edge Metrics</name><type>HTTP_AGENT</type><key>edge.metrics</key><delay>5s</delay><history>0</history><trends>0</trends><value_type>TEXT</value_type><timeout>30s</timeout><url>{$EDGE_DOMAIN}</url><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item><item><uuid>ad27c2a4625a4a5b9c28d85e3289a101</uuid><name>Max File Descriptor</name><type>DEPENDENT</type><key>fds.max</key><delay>0</delay><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>process_max_fds</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Process</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item><item><uuid>bbf51b6aa3ef431e85173c4b0c1e86da</uuid><name>Process Start Time</name><type>DEPENDENT</type><key>start.time</key><delay>0</delay><trends>0</trends><value_type>TEXT</value_type><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>process_start_time_seconds</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Process</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item><item><uuid>b82d2b7ec853479ab3a22d99cd14c2df</uuid><name>Virtual Memory</name><type>DEPENDENT</type><key>vm.byte</key><delay>0</delay><trends>0</trends><value_type>TEXT</value_type><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>process_virtual_memory_bytes</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Process</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item><item><uuid>4793b77c1bf74be8a5a9fd2f4314b4db</uuid><name>Virtual Memory Max</name><type>DEPENDENT</type><key>vm.max</key><delay>0</delay><trends>0</trends><value_type>TEXT</value_type><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>process_virtual_memory_max_bytes</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Process</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item><item><uuid>cb517c9642784a678eddbd8ed80a81e5</uuid><name>Memory Resident</name><type>DEPENDENT</type><key>vm.res</key><delay>0</delay><trends>0</trends><value_type>TEXT</value_type><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>process_resident_memory_bytes</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Process</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item></items><discovery_rules><discovery_rule><uuid>30159eb2d1c14a2baca166daf9ff9a5f</uuid><name>Router Conn Discover</name><type>DEPENDENT</type><key>lld.connup</key><delay>0</delay><lifetime>7d</lifetime><item_prototypes><item_prototype><uuid>6db231c0081447e9bf28f0073056a71e</uuid><name>{#TYPE} connection up on {#TENANT}</name><type>DEPENDENT</type><key>conn.up.[{#TYPE}.{#TENANT}]</key><delay>0</delay><trends>0</trends><value_type>TEXT</value_type><description>{#HELP}</description><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>{#METRIC}{tenant=&quot;{#TENANT}&quot;,type=&quot;{#TYPE}&quot;}</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Router</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item_prototype></item_prototypes><master_item><key>edge.metrics</key></master_item><lld_macro_paths><lld_macro_path><lld_macro>{#HELP}</lld_macro><path>$['help']</path></lld_macro_path><lld_macro_path><lld_macro>{#METRIC}</lld_macro><path>$['name']</path></lld_macro_path><lld_macro_path><lld_macro>{#TENANT}</lld_macro><path>$.labels['tenant']</path></lld_macro_path><lld_macro_path><lld_macro>{#TYPE}</lld_macro><path>$.labels['type']</path></lld_macro_path></lld_macro_paths><preprocessing><step><type>PROMETHEUS_TO_JSON</type><parameters><parameter>router_conn_open{tenant=~&quot;.*&quot;,type=~&quot;.*&quot;}</parameter></parameters></step></preprocessing></discovery_rule><discovery_rule><uuid>28d7fc01843d468fa705cc0609d78f1a</uuid><name>Router Lifetime Discover</name><type>DEPENDENT</type><key>lld.lifetime</key><delay>0</delay><lifetime>7d</lifetime><item_prototypes><item_prototype><uuid>3a6164ca3ee24d7a9795c26b1a292048</uuid><name>{#TYPE} lifetime on {#TENANT} by {#LE} s</name><type>DEPENDENT</type><key>lifetime.[{#TYPE}.{#TENANT}.{#LE}]</key><delay>0</delay><units>s</units><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>{#METRIC}{tenant=&quot;{#TENANT}&quot;,type=&quot;{#TYPE}&quot;,le=&quot;{#LE}&quot;}</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Router</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item_prototype></item_prototypes><master_item><key>edge.metrics</key></master_item><lld_macro_paths><lld_macro_path><lld_macro>{#HELP}</lld_macro><path>$['help']</path></lld_macro_path><lld_macro_path><lld_macro>{#LE}</lld_macro><path>$.labels['le']</path></lld_macro_path><lld_macro_path><lld_macro>{#METRIC}</lld_macro><path>$['name']</path></lld_macro_path><lld_macro_path><lld_macro>{#TENANT}</lld_macro><path>$.labels['tenant']</path></lld_macro_path><lld_macro_path><lld_macro>{#TYPE}</lld_macro><path>$.labels['type']</path></lld_macro_path></lld_macro_paths><preprocessing><step><type>PROMETHEUS_TO_JSON</type><parameters><parameter>router_conn_lifetime_seconds_bucket{tenant=~&quot;.*&quot;,type=~&quot;.*&quot;,le=~&quot;.*&quot;}</parameter></parameters></step></preprocessing></discovery_rule><discovery_rule><uuid>1e4a2e8d257d4c85a80d778b50db2ef7</uuid><name>Router Read Throughput Discover</name><type>DEPENDENT</type><key>lld.thrput.r</key><delay>0</delay><lifetime>7d</lifetime><item_prototypes><item_prototype><uuid>22721237f3f4426bbbb6c8bf40552b60</uuid><name>{#TYPE} read throughput on {#TENANT}</name><type>DEPENDENT</type><key>thrgpt.r.[{#TYPE}.{#TENANT}]</key><delay>0</delay><trends>0</trends><value_type>TEXT</value_type><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>{#METRIC}{tenant=&quot;{#TENANT}&quot;,type=&quot;{#TYPE}&quot;}</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Router</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item_prototype></item_prototypes><master_item><key>edge.metrics</key></master_item><lld_macro_paths><lld_macro_path><lld_macro>{#HELP}</lld_macro><path>$['help']</path></lld_macro_path><lld_macro_path><lld_macro>{#METRIC}</lld_macro><path>$['name']</path></lld_macro_path><lld_macro_path><lld_macro>{#TENANT}</lld_macro><path>$.labels['tenant']</path></lld_macro_path><lld_macro_path><lld_macro>{#TYPE}</lld_macro><path>$.labels['type']</path></lld_macro_path></lld_macro_paths><preprocessing><step><type>PROMETHEUS_TO_JSON</type><parameters><parameter>router_conn_throughput_read{tenant=~&quot;.*&quot;,type=~&quot;.*&quot;}</parameter></parameters></step></preprocessing></discovery_rule><discovery_rule><uuid>0558bf93f89e466c8d26c91970d92f67</uuid><name>Router Write Throughput Discover</name><type>DEPENDENT</type><key>lld.thrput.w</key><delay>0</delay><lifetime>7d</lifetime><item_prototypes><item_prototype><uuid>4f4e66f194df4507beada9a3671bb581</uuid><name>{#TYPE} write throughput on {#TENANT}</name><type>DEPENDENT</type><key>thrgpt.w.[{#TYPE}.{#TENANT}]</key><delay>0</delay><trends>0</trends><value_type>TEXT</value_type><preprocessing><step><type>PROMETHEUS_PATTERN</type><parameters><parameter>{#METRIC}{tenant=&quot;{#TENANT}&quot;,type=&quot;{#TYPE}&quot;}</parameter><parameter/></parameters></step></preprocessing><master_item><key>edge.metrics</key></master_item><tags><tag><tag>Components</tag><value>Edge</value></tag><tag><tag>Section</tag><value>Router</value></tag><tag><tag>Zabbix_Type</tag><value>Items</value></tag></tags></item_prototype></item_prototypes><master_item><key>edge.metrics</key></master_item><lld_macro_paths><lld_macro_path><lld_macro>{#HELP}</lld_macro><path>$['help']</path></lld_macro_path><lld_macro_path><lld_macro>{#METRIC}</lld_macro><path>$['name']</path></lld_macro_path><lld_macro_path><lld_macro>{#TENANT}</lld_macro><path>$.labels['tenant']</path></lld_macro_path><lld_macro_path><lld_macro>{#TYPE}</lld_macro><path>$.labels['type']</path></lld_macro_path></lld_macro_paths><preprocessing><step><type>PROMETHEUS_TO_JSON</type><parameters><parameter>router_conn_throughput_write{tenant=~&quot;.*&quot;,type=~&quot;.*&quot;}</parameter></parameters></step></preprocessing></discovery_rule></discovery_rules><tags><tag><tag>Component</tag><value>Edge</value></tag><tag><tag>Service</tag><value>Safous</value></tag><tag><tag>Type</tag><value>Template</value></tag></tags><macros><macro><macro>{$EDGE_DOMAIN}</macro></macro></macros></template></templates></zabbix_export>\n"
-    },
-    "auth": "$ZBX_AUTH_TOKEN",
-    "id": 1
+        ],
+        "templates": [
+            {
+                "uuid": "0bd17bb796f040c88f26db88c5354d4e",
+                "template": "Safous Edge Monitoring Edge",
+                "name": "Safous Edge Monitoring Edge",
+                "groups": [
+                    {
+                        "name": "Safous Edge"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "28c7738ec9fb4856aae92e054f8b6b87",
+                        "name": "Total CPU Process Seconds",
+                        "type": "DEPENDENT",
+                        "key": "cpu.total.s",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "units": "s",
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_PATTERN",
+                                "parameters": [
+                                    "process_cpu_seconds_total",
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Components",
+                                "value": "Edge"
+                            },
+                            {
+                                "tag": "Section",
+                                "value": "Process"
+                            },
+                            {
+                                "tag": "Zabbix_Type",
+                                "value": "Items"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0ae81d55232b441db114421226bd18bf",
+                        "name": "Edge Metrics",
+                        "type": "HTTP_AGENT",
+                        "key": "edge.metrics",
+                        "delay": "5s",
+                        "history": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "timeout": "30s",
+                        "url": "{$EDGE_DOMAIN}",
+                        "tags": [
+                            {
+                                "tag": "Components",
+                                "value": "Edge"
+                            },
+                            {
+                                "tag": "Zabbix_Type",
+                                "value": "Items"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ad27c2a4625a4a5b9c28d85e3289a101",
+                        "name": "Max File Descriptor",
+                        "type": "DEPENDENT",
+                        "key": "fds.max",
+                        "delay": "0",
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_PATTERN",
+                                "parameters": [
+                                    "process_max_fds",
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Components",
+                                "value": "Edge"
+                            },
+                            {
+                                "tag": "Section",
+                                "value": "Process"
+                            },
+                            {
+                                "tag": "Zabbix_Type",
+                                "value": "Items"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "bbf51b6aa3ef431e85173c4b0c1e86da",
+                        "name": "Process Start Time",
+                        "type": "DEPENDENT",
+                        "key": "start.time",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_PATTERN",
+                                "parameters": [
+                                    "process_start_time_seconds",
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Components",
+                                "value": "Edge"
+                            },
+                            {
+                                "tag": "Section",
+                                "value": "Process"
+                            },
+                            {
+                                "tag": "Zabbix_Type",
+                                "value": "Items"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "b82d2b7ec853479ab3a22d99cd14c2df",
+                        "name": "Virtual Memory",
+                        "type": "DEPENDENT",
+                        "key": "vm.byte",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_PATTERN",
+                                "parameters": [
+                                    "process_virtual_memory_bytes",
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Components",
+                                "value": "Edge"
+                            },
+                            {
+                                "tag": "Section",
+                                "value": "Process"
+                            },
+                            {
+                                "tag": "Zabbix_Type",
+                                "value": "Items"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4793b77c1bf74be8a5a9fd2f4314b4db",
+                        "name": "Virtual Memory Max",
+                        "type": "DEPENDENT",
+                        "key": "vm.max",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_PATTERN",
+                                "parameters": [
+                                    "process_virtual_memory_max_bytes",
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Components",
+                                "value": "Edge"
+                            },
+                            {
+                                "tag": "Section",
+                                "value": "Process"
+                            },
+                            {
+                                "tag": "Zabbix_Type",
+                                "value": "Items"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "cb517c9642784a678eddbd8ed80a81e5",
+                        "name": "Memory Resident",
+                        "type": "DEPENDENT",
+                        "key": "vm.res",
+                        "delay": "0",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_PATTERN",
+                                "parameters": [
+                                    "process_resident_memory_bytes",
+                                    ""
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Components",
+                                "value": "Edge"
+                            },
+                            {
+                                "tag": "Section",
+                                "value": "Process"
+                            },
+                            {
+                                "tag": "Zabbix_Type",
+                                "value": "Items"
+                            }
+                        ]
+                    }
+                ],
+                "discovery_rules": [
+                    {
+                        "uuid": "30159eb2d1c14a2baca166daf9ff9a5f",
+                        "name": "Router Conn Discover",
+                        "type": "DEPENDENT",
+                        "key": "lld.connup",
+                        "delay": "0",
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "6db231c0081447e9bf28f0073056a71e",
+                                "name": "{#TYPE} connection up on {#TENANT}",
+                                "type": "DEPENDENT",
+                                "key": "conn.up.[{#TYPE}.{#TENANT}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "description": "{#HELP}",
+                                "preprocessing": [
+                                    {
+                                        "type": "PROMETHEUS_PATTERN",
+                                        "parameters": [
+                                            "{#METRIC}{tenant=\"{#TENANT}\",type=\"{#TYPE}\"}",
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "edge.metrics"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Components",
+                                        "value": "Edge"
+                                    },
+                                    {
+                                        "tag": "Section",
+                                        "value": "Router"
+                                    },
+                                    {
+                                        "tag": "Zabbix_Type",
+                                        "value": "Items"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#HELP}",
+                                "path": "$['help']"
+                            },
+                            {
+                                "lld_macro": "{#METRIC}",
+                                "path": "$['name']"
+                            },
+                            {
+                                "lld_macro": "{#TENANT}",
+                                "path": "$.labels['tenant']"
+                            },
+                            {
+                                "lld_macro": "{#TYPE}",
+                                "path": "$.labels['type']"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_TO_JSON",
+                                "parameters": [
+                                    "router_conn_open{tenant=~\".*\",type=~\".*\"}"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "28d7fc01843d468fa705cc0609d78f1a",
+                        "name": "Router Lifetime Discover",
+                        "type": "DEPENDENT",
+                        "key": "lld.lifetime",
+                        "delay": "0",
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "3a6164ca3ee24d7a9795c26b1a292048",
+                                "name": "{#TYPE} lifetime on {#TENANT} by {#LE} s",
+                                "type": "DEPENDENT",
+                                "key": "lifetime.[{#TYPE}.{#TENANT}.{#LE}]",
+                                "delay": "0",
+                                "units": "s",
+                                "preprocessing": [
+                                    {
+                                        "type": "PROMETHEUS_PATTERN",
+                                        "parameters": [
+                                            "{#METRIC}{tenant=\"{#TENANT}\",type=\"{#TYPE}\",le=\"{#LE}\"}",
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "edge.metrics"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Components",
+                                        "value": "Edge"
+                                    },
+                                    {
+                                        "tag": "Section",
+                                        "value": "Router"
+                                    },
+                                    {
+                                        "tag": "Zabbix_Type",
+                                        "value": "Items"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#HELP}",
+                                "path": "$['help']"
+                            },
+                            {
+                                "lld_macro": "{#LE}",
+                                "path": "$.labels['le']"
+                            },
+                            {
+                                "lld_macro": "{#METRIC}",
+                                "path": "$['name']"
+                            },
+                            {
+                                "lld_macro": "{#TENANT}",
+                                "path": "$.labels['tenant']"
+                            },
+                            {
+                                "lld_macro": "{#TYPE}",
+                                "path": "$.labels['type']"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_TO_JSON",
+                                "parameters": [
+                                    "router_conn_lifetime_seconds_bucket{tenant=~\".*\",type=~\".*\",le=~\".*\"}"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1e4a2e8d257d4c85a80d778b50db2ef7",
+                        "name": "Router Read Throughput Discover",
+                        "type": "DEPENDENT",
+                        "key": "lld.thrput.r",
+                        "delay": "0",
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "22721237f3f4426bbbb6c8bf40552b60",
+                                "name": "{#TYPE} read throughput on {#TENANT}",
+                                "type": "DEPENDENT",
+                                "key": "thrgpt.r.[{#TYPE}.{#TENANT}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "PROMETHEUS_PATTERN",
+                                        "parameters": [
+                                            "{#METRIC}{tenant=\"{#TENANT}\",type=\"{#TYPE}\"}",
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "edge.metrics"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Components",
+                                        "value": "Edge"
+                                    },
+                                    {
+                                        "tag": "Section",
+                                        "value": "Router"
+                                    },
+                                    {
+                                        "tag": "Zabbix_Type",
+                                        "value": "Items"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#HELP}",
+                                "path": "$['help']"
+                            },
+                            {
+                                "lld_macro": "{#METRIC}",
+                                "path": "$['name']"
+                            },
+                            {
+                                "lld_macro": "{#TENANT}",
+                                "path": "$.labels['tenant']"
+                            },
+                            {
+                                "lld_macro": "{#TYPE}",
+                                "path": "$.labels['type']"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_TO_JSON",
+                                "parameters": [
+                                    "router_conn_throughput_read{tenant=~\".*\",type=~\".*\"}"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0558bf93f89e466c8d26c91970d92f67",
+                        "name": "Router Write Throughput Discover",
+                        "type": "DEPENDENT",
+                        "key": "lld.thrput.w",
+                        "delay": "0",
+                        "lifetime": "7d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "4f4e66f194df4507beada9a3671bb581",
+                                "name": "{#TYPE} write throughput on {#TENANT}",
+                                "type": "DEPENDENT",
+                                "key": "thrgpt.w.[{#TYPE}.{#TENANT}]",
+                                "delay": "0",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "PROMETHEUS_PATTERN",
+                                        "parameters": [
+                                            "{#METRIC}{tenant=\"{#TENANT}\",type=\"{#TYPE}\"}",
+                                            ""
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "edge.metrics"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Components",
+                                        "value": "Edge"
+                                    },
+                                    {
+                                        "tag": "Section",
+                                        "value": "Router"
+                                    },
+                                    {
+                                        "tag": "Zabbix_Type",
+                                        "value": "Items"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "edge.metrics"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#HELP}",
+                                "path": "$['help']"
+                            },
+                            {
+                                "lld_macro": "{#METRIC}",
+                                "path": "$['name']"
+                            },
+                            {
+                                "lld_macro": "{#TENANT}",
+                                "path": "$.labels['tenant']"
+                            },
+                            {
+                                "lld_macro": "{#TYPE}",
+                                "path": "$.labels['type']"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "PROMETHEUS_TO_JSON",
+                                "parameters": [
+                                    "router_conn_throughput_write{tenant=~\".*\",type=~\".*\"}"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    {
+                        "tag": "Component",
+                        "value": "Edge"
+                    },
+                    {
+                        "tag": "Service",
+                        "value": "Safous"
+                    },
+                    {
+                        "tag": "Type",
+                        "value": "Template"
+                    }
+                ],
+                "macros": [
+                    {
+                        "macro": "{$EDGE_DOMAIN}"
+                    }
+                ]
+            }
+        ]
+    }
 }
